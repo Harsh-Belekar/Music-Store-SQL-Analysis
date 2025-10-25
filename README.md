@@ -4,6 +4,13 @@ This project analyzes a digital music store database using **PostgreSQL**.
 The database contains information about employees, customers, invoices, tracks, playlists, artists, albums, and more.  
 Through SQL queries, we explore **sales trends, customer behavior, popular genres, top artists, and revenue insights**.
 
+![SQL](https://img.shields.io/badge/Language-SQL-blue)
+![Database](https://img.shields.io/badge/Database-PostgreSQL-green)
+![Data Analysis](https://img.shields.io/badge/Focus-Data_Analysis-orange)
+![ETL](https://img.shields.io/badge/Process-ETL-yellow)
+![Queries](https://img.shields.io/badge/Queries-Advanced_SQL-purple)
+![Tool](https://img.shields.io/badge/Tool-dbdiagram.io-lightgrey)
+
 ---
 
 ## 🛠️ Tools & Technologies
@@ -50,6 +57,10 @@ The database has **11 tables**:
 
 ---
 
-## 📧 Contact
+## 🧠 Author
 
-🔗 [LinkedIn – Harsh Belekar](https://www.linkedin.com/in/harshbelekar)
+**👤 Harsh Belekar**  
+📍 Data Analyst | Python | SQL | Power BI | Excel | Data Visualization  
+🔗 [LinkedIn](https://www.linkedin.com/in/harshbelekar) | [GitHub](https://github.com/Harsh-Belekar)
+
+📧 **harshbelekar74@gmail.com**
