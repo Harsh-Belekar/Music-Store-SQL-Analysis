@@ -21,13 +21,18 @@ Through SQL queries, we explore **sales trends, customer behavior, popular genre
 
 ---
 
-## 📂 Project Files
-- `music_store_csv.zip` → Contains all 11 dataset files in CSV format  
-- `schema_diagram.png` → ER diagram showing relationships between tables  
-- `Create_table_query.sql` → SQL queries to create tables  
-- `Questions.txt` → Business/analysis questions  
-- `Answers.sql` → SQL queries answering the analysis questions  
+## 🧩 Project Structure
 
+```
+├── Create_table_query.sql     # All CREATE TABLE Query
+├── Questions.txt              # List of analysis questions
+├── Answers.sql                # All SQL analysis queries
+├── music_store_csv.zip        # Contains all 11 dataset files in CSV format
+├──📂images/
+│ ├── schema_diagram.png       # Schema diagram
+│ └── output.png               # Query Output example
+└── README.md                  # Project documentation
+```
 ---
 
 ## 🗄️ Database Schema
@@ -45,7 +50,38 @@ The database has **11 tables**:
 - **Media_Type** → File/media type of tracks  
 - **Genre** → Music genres  
 
-📌 See `schema_diagram.png` for a complete Entity-Relationship diagram.
+📊 **ER Diagram:**
+
+![ER Diagram](images/schema_diagram.png)
+
+---
+
+## 📝 Query Showcase (Example)
+
+**Problem:** We want to find out the most popular music Genre for each country. We determine the 
+most popular genre as the genre with the highest amount of purchases. Write a query 
+that returns each country along with the top Genre. For countries where the maximum 
+number of purchases is shared return all Genres
+
+#### Query
+```sql
+WITH popular_genre AS (
+	SELECT c.country,g.name AS genre,g.genre_id,
+	COUNT(il.quantity) AS purchases,
+	ROW_NUMBER() OVER(PARTITION BY c.country ORDER BY COUNT(il.quantity) DESC) AS RowNo 
+	FROM customer c
+	JOIN invoice i ON i.customer_id=c.customer_id
+	JOIN invoice_line il ON il.invoice_id=i.invoice_id
+	JOIN track t ON t.track_id=il.track_id
+	JOIN genre g ON g.genre_id=t.genre_id
+	GROUP BY 1,2,3
+	ORDER BY 1 ASC ,4 DESC
+)
+SELECT * FROM popular_genre 
+WHERE RowNo <=1;
+```
+#### Output :
+![Output Screenshot](images/output.png)
 
 ---
 
@@ -64,3 +100,4 @@ The database has **11 tables**:
 🔗 [LinkedIn](https://www.linkedin.com/in/harshbelekar) | [GitHub](https://github.com/Harsh-Belekar)
 
 📧 **harshbelekar74@gmail.com**
+
